@@ -18,7 +18,7 @@ class MainController extends Controller
 
     public function mainAction(){
 
-        return new Response('hej');
+        return [];
     }
 
 
