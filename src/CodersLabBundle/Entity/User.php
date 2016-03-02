@@ -19,6 +19,11 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany (targetEntity="Task", mappedBy="user")
+     */
+
+    private $user_task;
 
 
 
@@ -26,5 +31,38 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+    }
+
+    /**
+     * Add user_task
+     *
+     * @param \CodersLabBundle\Entity\Task $userTask
+     * @return User
+     */
+    public function addUserTask(\CodersLabBundle\Entity\Task $userTask)
+    {
+        $this->user_task[] = $userTask;
+
+        return $this;
+    }
+
+    /**
+     * Remove user_task
+     *
+     * @param \CodersLabBundle\Entity\Task $userTask
+     */
+    public function removeUserTask(\CodersLabBundle\Entity\Task $userTask)
+    {
+        $this->user_task->removeElement($userTask);
+    }
+
+    /**
+     * Get user_task
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserTask()
+    {
+        return $this->user_task;
     }
 }

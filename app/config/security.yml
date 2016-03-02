@@ -14,14 +14,14 @@ security:
         main:
             pattern: ^/
             form_login:
-                default_target_path: /
+                default_target_path: /main
                 always_use_default_target_path: false
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
 
             logout:
                 path: /logout
-                target: /
+                target: /login
 
             anonymous:    true
 

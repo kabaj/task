@@ -1,0 +1,14 @@
+
+
+<h1>Main</h1>
+Zalogowany /\ {{ app.user.username }} /\
+<br>
+<a href="{{ path('task')}}"> Task To Do </a>
+<br>
+{#<a href="{{ path('task_new') }}"> New Taks </a>
+<a href="{{ path('') }}"> Calendar</a>
+<a href="{{ path('') }}"> Old Task </a>#}
+<a href="{{ path('fos_user_security_logout') }}">Logut</a>
+<br>
+<a href="{{ path('fos_user_change_password') }}">Change password</a>
+

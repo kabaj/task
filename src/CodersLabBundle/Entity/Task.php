@@ -56,6 +56,13 @@ class Task
      */
     private $priority;
 
+    /**
+    * @ORM\ManyToOne( targetEntity = "User", inversedBy= "posts")
+    * @ORM\JoinColumn( name="user_id", referencedColumnName="id")
+    */
+    private $user_task;
+
+
 
     /**
      * Get id
@@ -180,5 +187,28 @@ class Task
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * Set user_task
+     *
+     * @param \CodersLabBundle\Entity\User $userTask
+     * @return Task
+     */
+    public function setUserTask(\CodersLabBundle\Entity\User $userTask = null)
+    {
+        $this->user_task = $userTask;
+
+        return $this;
+    }
+
+    /**
+     * Get user_task
+     *
+     * @return \CodersLabBundle\Entity\User 
+     */
+    public function getUserTask()
+    {
+        return $this->user_task;
     }
 }
