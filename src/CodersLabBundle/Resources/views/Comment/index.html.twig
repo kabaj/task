@@ -3,13 +3,13 @@
 {% block body -%}
     <h1>Comment list</h1>
 
-    <table class="records_list">
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Actions</th>
+                <th>#</th>
+                <th>Opis</th>
+                <th>Data</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -19,25 +19,23 @@
                 <td>{{ entity.description }}</td>
                 <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                <ul>
+
                     <li>
-                        <a href="{{ path('comment_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('comment_show', { 'id': entity.id }) }}">Wiecej</a>
                     </li>
                     <li>
-                        <a href="{{ path('comment_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('comment_edit', { 'id': entity.id }) }}">Edytuj</a>
                     </li>
-                </ul>
+
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('comment_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+
+    <a href="{{ path('comment_new') }}"><h5>Dodaj nowy komentarz</h5></a>
+    <a href="{{ path('task') }}"><h5>Wróć do listy</h5></a>
+    <a href="{{ path('coderslab_main_main') }}"><h5>Strona główna</h5></a>
+
     {% endblock %}

@@ -1,20 +1,18 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Task </h1>
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Task </h1>
 
-    {{ form(edit_form) }}
-
-
-
-        <a href="{{ path('task') }}">
-            Wróć do listy
-        </a>
-    <br>
+            {{ form(edit_form) }}
+        </div>
+    </div>
 
     {{ form(delete_form) }}
-<br>
-    <a href="{{ path('coderslab_main_main') }}">Main</a>
-    <br>
-    <a href="{{ path('fos_user_security_logout') }}">Logut</a>
+    <a href="{{ path('task') }}"><h5>Wróć do listy</h5></a>
+
+    <a href="{{ path('coderslab_main_main') }}"><h5>Strona główna</h5></a>
+
+    <a href="{{ path('fos_user_security_logout') }}"><h5>Wyloguj</h5></a>
 {% endblock %}

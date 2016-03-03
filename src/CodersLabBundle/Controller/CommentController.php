@@ -108,6 +108,7 @@ class CommentController extends Controller
      */
     public function showAction($id)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CodersLabBundle:Comment')->find($id);

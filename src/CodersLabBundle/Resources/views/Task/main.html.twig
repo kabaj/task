@@ -1,25 +1,28 @@
 
-
 <html>
 <head>
-<!-- Latest compiled and minified CSS & JS -->
-<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<head>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
 
-<body class="col-md-3 col-md-offset-3">
+<div class="row">
+    <div class="col-md-4">
+        <a> </a>
+    </div>
+    <div class="col-md-4" >
 
-<div>
-<h1>Main</h1>
+        <h1>Planer</h1>
+
+        <a href="{{ path('task') }}"><h5>Twoje Cele</h5></a>
+
+        <a href="{{ path('task_new') }}"><h5>Dodaj Cel</h5></a>
+
+        <a href="{{ path('fos_user_security_logout') }}"><h5>Wyloguj</h5></a>
+
+        <a href="{{ path('fos_user_change_password') }}"><h5>Zmień hasło</h5></a>
+
+        <h5>Zalogowany # {{ app.user.username }} #</h5>
+    </div>
+    <div class="col-md-4"><a> </a></div>
 </div>
-<br>
-<a href="{{ path('task')}}"> Zadania Firmy </a>
-<br>
-<a href="{{ path('task_new')}}"> Dodaj Zadanie</a>
-<br>
-<a href="{{ path('fos_user_security_logout') }}">Logut</a>
-<br>
-<a href="{{ path('fos_user_change_password') }}">Change password</a>
-</body>
-
-</html>

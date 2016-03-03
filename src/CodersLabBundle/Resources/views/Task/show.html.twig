@@ -1,55 +1,46 @@
 {% extends '::base.html.twig' %}
 
+
 {% block body -%}
     <h1>Task</h1>
-    <table class="record_properties">
+<div class="row">
+    <div class="col-md-4">
+    <table class="table">
         <tbody>
-            <tr>
-                <th>Nazwa</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Opis</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Data</th>
-                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ entity.status }}</td>
-            </tr>
-            <tr>
-                <th>Piorytet</th>
-                <td>{{ entity.priority }}</td>
-            </tr>
+        <tr class="warning">
+            <th>Nazwa</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Opis</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th>Data</th>
+            <td>{{ entity.date|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ entity.status }}</td>
+        </tr>
+        <tr>
+            <th>Piorytet</th>
+            <td>{{ entity.priority }}</td>
+        </tr>
         </tbody>
     </table>
+</div>
 
+    <div class="col-md-4">
+            <p>****KOMENTARZE*****</p>
+        </div>
+     </div>
+            {{ form(delete_form) }}
 
-    <p>****KOMENTARZE*****</p>
+            <a href="{{ path('task') }}"><h5>Wróć do listy</h5></a>
+            <a href="{{ path('task_edit', { 'id': entity.id }) }}"><h5>Edytuj</h5></a>
+            <a href="{{ path('coderslab_main_main') }}"><h5>Strona główna</h5></a>
+            <a href="{{ path('fos_user_security_logout') }}"><h5>Wyloguj</h5></a>
 
-
-
-
-
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('task') }}">
-            Wróć do listy
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('task_edit', { 'id': entity.id }) }}">
-           Edytuj
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-    <a href="{{ path('coderslab_main_main') }}">Strona główna</a>
-    <br>
-    <a href="{{ path('fos_user_security_logout') }}">Wyloguj</a>
 {% endblock %}
 

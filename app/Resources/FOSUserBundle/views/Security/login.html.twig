@@ -1,4 +1,3 @@
-
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
@@ -8,21 +7,35 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path("fos_user_security_check") }}" method="post">
+    <form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
 
         <div class="form-group">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-        <label for="username">Login</label>
-        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
-        <br>
-        <label for="password">Hasło</label>
-        <input type="password" class="form-control" id="password" name="_password" required="required" />
-        <br>
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">Zapamietaj mnie</label>
-        <br>
-        <input type="submit" id="_submit" name="_submit" value="Zatwierdź" />
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+            <label for="username" class="col-sm-2 control-label">Login</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Email" id="username" name="_username"
+                       value="{{ last_username }}" required="required"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Hasło</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="Hasło" id="password" name="_password"
+                       required="required"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember_me" name="_remember_me"/>
+                    <label for="remember_me"><p>Zapamietaj mnie</p></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" id="_submit" class="btn btn-default" name="_submit" value="Zatwierdź"/>
+            </div>
         </div>
     </form>
 

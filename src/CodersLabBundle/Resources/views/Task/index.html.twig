@@ -1,56 +1,53 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Cele Firmy</h1>
+    <h1>Twoje Cele</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nazwa</th>
+                    <th>Opis</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Piorytet</th>
+                    <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr class="active">
+                        <td><a>{{ entity.id }}</a></td>
+                        <td>{{ entity.name }}</td>
+                        <td>{{ entity.description }}</td>
+                        <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ entity.status }}</td>
+                        <td>{{ entity.priority }}</td>
+                        <td>
+                            <li>
+                                <a href="{{ path('task_show', { 'id': entity.id }) }}">Wiecej</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('task_edit', { 'id': entity.id }) }}">Edytuj</a>
+                            </li>
+                            <li><a href="{{ path('comment_new', { 'id': entity.id }) }}">
+                                    Komentarz
+                                </a>
+                            </li>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="{{ path('task_new') }}">
+        <h5>Dodaj Cel</h5>
+    </a>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nazwa</th>
-                <th>Opis</th>
-                <th>Data</th>
-                <th>Status</th>
-                <th>Piorytet</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a>{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.description }}</td>
-                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.status }}</td>
-                <td>{{ entity.priority }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('task_show', { 'id': entity.id }) }}">Wiecej</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('task_edit', { 'id': entity.id }) }}">Edytuj</a>
-                    </li>
-                    <li><a href="{{ path('comment_new', { 'id': entity.id }) }}">
-                        Komentarz
-                    </a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <a href="{{ path('coderslab_main_main') }}"><h5>Strona Główna</h5></a>
 
-
-
-            <a href="{{ path('task_new') }}">
-                Dodaj nowe zadanie
-            </a>
-
-<br>
-    <a href="{{ path('coderslab_main_main') }}">Strona Główna</a>
-    <br>
-    <a href="{{ path('fos_user_security_logout') }}">Wyloguj</a>
-    {% endblock %}
+    <a href="{{ path('fos_user_security_logout') }}"><h5>Wyloguj</h5></a>
+{% endblock %}

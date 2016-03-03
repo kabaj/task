@@ -38,7 +38,7 @@ class Task
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="data", type="date")
      */
     private $date;
 
