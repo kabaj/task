@@ -62,6 +62,12 @@ class Task
     */
     private $user_task;
 
+    /**
+     * @ORM\OneToMany (targetEntity="Comment", mappedBy="comment")
+     */
+
+    private $task_comment;
+
 
 
     /**
@@ -210,5 +216,45 @@ class Task
     public function getUserTask()
     {
         return $this->user_task;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->task_comment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add task_comment
+     *
+     * @param \CodersLabBundle\Entity\Comment $taskComment
+     * @return Task
+     */
+    public function addTaskComment(\CodersLabBundle\Entity\Comment $taskComment)
+    {
+        $this->task_comment[] = $taskComment;
+
+        return $this;
+    }
+
+    /**
+     * Remove task_comment
+     *
+     * @param \CodersLabBundle\Entity\Comment $taskComment
+     */
+    public function removeTaskComment(\CodersLabBundle\Entity\Comment $taskComment)
+    {
+        $this->task_comment->removeElement($taskComment);
+    }
+
+    /**
+     * Get task_comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTaskComment()
+    {
+        return $this->task_comment;
     }
 }

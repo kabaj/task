@@ -1,14 +1,25 @@
 
 
+<html>
+<head>
+<!-- Latest compiled and minified CSS & JS -->
+<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<head>
+
+<body class="col-md-3 col-md-offset-3">
+
+<div>
 <h1>Main</h1>
-Zalogowany /\ {{ app.user.username }} /\
+</div>
 <br>
-<a href="{{ path('task')}}"> Task To Do </a>
+<a href="{{ path('task')}}"> Zadania Firmy </a>
 <br>
-{#<a href="{{ path('task_new') }}"> New Taks </a>
-<a href="{{ path('') }}"> Calendar</a>
-<a href="{{ path('') }}"> Old Task </a>#}
+<a href="{{ path('task_new')}}"> Dodaj Zadanie</a>
+<br>
 <a href="{{ path('fos_user_security_logout') }}">Logut</a>
 <br>
 <a href="{{ path('fos_user_change_password') }}">Change password</a>
+</body>
 
+</html>
