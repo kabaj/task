@@ -1,11 +1,10 @@
 {% extends '::base.html.twig' %}
 
-
 {% block body -%}
     <div class="col-md-1">
         <a> </a>
     </div>
-    <h1>Twoj cel</h1>
+    <h1>Pilne cele</h1>
     <a class="btn btn-primary" href="{{ path('task') }}" role="button">Twoje Cele</a>
     <a class="btn btn-primary" href="{{ path('task_new') }}" role="button">Dodaj Cel</a>
     <a class="btn btn-warning" href="{{ path('coderslab_task_indextodo') }}" role="button">W trakcie</a>
@@ -20,41 +19,40 @@
         <div class="col-md-1">
             <a> </a>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
             <table class="table table-hover">
-                <tbody>
-                <tr class="warning">
+                <thead>
+                <tr>
                     <th>Nazwa</th>
-                    <td>{{ entity.name }}</td>
-                </tr>
-                <tr>
                     <th>Opis</th>
-                    <td>{{ entity.description }}</td>
-                </tr>
-                <tr>
                     <th>Data</th>
-                    <td>{{ entity.date|date('Y-m-d') }}</td>
-                </tr>
-                <tr>
                     <th>Status</th>
-                    <td>{{ entity.status }}</td>
-                </tr>
-                <tr>
                     <th>Piorytet</th>
-                    <td>{{ entity.priority }}</td>
+                    <th>Akcje</th>
                 </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr class="active">
+                        <td>{{ entity.name }}</td>
+                        <td>{{ entity.description }}</td>
+                        <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ entity.status }}</td>
+                        <td>{{ entity.priority }}</td>
+                        <td>
+                            <li>
+                                <a href="{{ path('task_show', { 'id': entity.id }) }}">Wiecej</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('task_edit', { 'id': entity.id }) }}">Edytuj</a>
+                            </li>
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
-
-
-            <p>****KOMENTARZE*****</p>
-
-
-            {{ form(delete_form) }}
-
         </div>
     </div>
     <hr>
 
 {% endblock %}
-

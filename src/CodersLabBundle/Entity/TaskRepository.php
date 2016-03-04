@@ -12,4 +12,74 @@ use Doctrine\ORM\EntityRepository;
  */
 class TaskRepository extends EntityRepository
 {
+
+
+    public function findOrderByTaskStatus($userId = null)
+    {
+
+        $dql= "SELECT task FROM CodersLabBundle:Task task WHERE task.status LIKE :status";
+        if( $userId != null ){
+            $dql.=" and task.user_task=$userId";
+        }
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            $dql)->setParameter('status', 'Do zrobienia');
+        $result = $query->getResult();
+        return $result;
+    }
+
+
+    public function findOrderByTaskStatusDone($userId = null)
+    {
+        $dql= "SELECT task FROM CodersLabBundle:Task task WHERE task.status LIKE :status";
+        if( $userId != null ){
+            $dql.=" and task.user_task=$userId";
+        }
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            $dql)->setParameter('status', 'Zrobiony');
+        $result = $query->getResult();
+        return $result;
+    }
+
+
+    public function findOrderByTaskPioritetyOne($userId = null)
+    {
+        $dql= "SELECT task FROM CodersLabBundle:Task task WHERE task.priority LIKE :priority";
+        if( $userId != null ){
+            $dql.=" and task.user_task=$userId";
+        }
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            $dql)->setParameter('priority', 'Pilny');
+        $result = $query->getResult();
+        return $result;
+    }
+
+    public function findOrderByTaskPioritetyTwo($userId = null)
+    {
+        $dql= "SELECT task FROM CodersLabBundle:Task task WHERE task.priority LIKE :priority";
+        if( $userId != null ){
+            $dql.=" and task.user_task=$userId";
+        }
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            $dql)->setParameter('priority', 'Ważny');
+        $result = $query->getResult();
+        return $result;
+    }
+
+    public function findOrderByTaskPioritetyTree($userId = null)
+    {
+        $dql= "SELECT task FROM CodersLabBundle:Task task WHERE task.priority LIKE :priority";
+        if( $userId != null ){
+            $dql.=" and task.user_task=$userId";
+        }
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+           $dql)->setParameter('priority', 'Normalny');
+        $result = $query->getResult();
+        return $result;
+    }
 }
+

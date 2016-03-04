@@ -165,7 +165,7 @@ class Task
     /**
      * Get status
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {

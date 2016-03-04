@@ -38,6 +38,103 @@ class TaskController extends Controller
             'entities' => $entities,
         );
     }
+
+    /**
+     * Lists all Task entities.
+     *
+     * @Route("/task_todo")
+     * @Method("GET")
+     * @Template("CodersLabBundle:Task:task_todo.html.twig")
+     */
+    public function indexToDoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CodersLabBundle:Task')->findOrderByTaskStatus(
+            $this->getUser()->getId()
+        );
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+    /**
+     * Lists all Task entities.
+     *
+     * @Route("/task_done")
+     * @Method("GET")
+     * @Template("CodersLabBundle:Task:task_done.html.twig")
+     */
+    public function indexDoneAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CodersLabBundle:Task')->findOrderByTaskStatusDone(
+             $this->getUser()->getId()
+        );
+///robimy analogicznie
+        return array(
+            'entities' => $entities,
+        );
+    }
+    /**
+     * Lists all Task entities.
+     *
+     * @Route("/task_pilny")
+     * @Method("GET")
+     * @Template("CodersLabBundle:Task:task_pilny.html.twig")
+     */
+    public function indexPioritetyOneAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CodersLabBundle:Task')->findOrderByTaskPioritetyOne(
+            $this->getUser()->getId()
+        );
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+    /**
+     * Lists all Task entities.
+     *
+     * @Route("/task_wazny")
+     * @Method("GET")
+     * @Template("CodersLabBundle:Task:task_wazny.html.twig")
+     */
+    public function indexPioritetyTwoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CodersLabBundle:Task')->findOrderByTaskPioritetyTwo(
+            $this->getUser()->getId()
+        );
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+    /**
+     * Lists all Task entities.
+     *
+     * @Route("/task_normalny")
+     * @Method("GET")
+     * @Template("CodersLabBundle:Task:task_normalny.html.twig")
+     */
+    public function indexPioritetyTreeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CodersLabBundle:Task')->findOrderByTaskPioritetyTree(
+            $this->getUser()->getId()
+        );
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+
     /**
      * Creates a new Task entity.
      *
@@ -129,6 +226,8 @@ class TaskController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
+
 
     /**
      * Displays a form to edit an existing Task entity.

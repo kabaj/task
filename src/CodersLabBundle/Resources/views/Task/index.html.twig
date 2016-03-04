@@ -1,13 +1,28 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+    <div class="col-md-1">
+        <a> </a>
+    </div>
     <h1>Twoje Cele</h1>
+    <a class="btn btn-primary" href="{{ path('task_new') }}" role="button">Dodaj Cel</a>
+    <a class="btn btn-warning" href="{{ path('coderslab_task_indextodo') }}" role="button">W trakcie</a>
+    <a class="btn btn-danger" href="{{ path('coderslab_task_indexpioritetyone') }}" role="button">Pilne</a>
+    <a class="btn btn-danger" href="{{ path('coderslab_task_indexpioritetytwo') }}" role="button">Wazne</a>
+    <a class="btn btn-danger" href="{{ path('coderslab_task_indexpioritetytree') }}" role="button">Normalny</a>
+    <a class="btn btn-warning" href="{{ path('coderslab_task_indexdone') }}" role="button">Osiągnięte</a>
+    <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}" role="button">Wyloguj</a>
+    <a class="btn btn-info" href="{{ path('fos_user_change_password') }}" role="button">Zmień hasło</a>
+    <hr>
     <div class="row">
+        <div class="col-md-1">
+            <a> </a>
+        </div>
         <div class="col-md-8">
-            <table class="table table-condensed">
+            <tbody>
+            <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Nazwa</th>
                     <th>Opis</th>
                     <th>Data</th>
@@ -16,10 +31,11 @@
                     <th>Akcje</th>
                 </tr>
                 </thead>
-                <tbody>
+
                 {% for entity in entities %}
+
                     <tr class="active">
-                        <td><a>{{ entity.id }}</a></td>
+
                         <td>{{ entity.name }}</td>
                         <td>{{ entity.description }}</td>
                         <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
@@ -34,16 +50,14 @@
                             </li>
                         </td>
                     </tr>
+
                 {% endfor %}
+
                 </tbody>
             </table>
+            </tbody>
         </div>
     </div>
-    <a href="{{ path('task_new') }}">
-        <h5>Dodaj Cel</h5>
-    </a>
+    <hr>
 
-    <a href="{{ path('coderslab_main_main') }}"><h5>Strona Główna</h5></a>
-
-    <a href="{{ path('fos_user_security_logout') }}"><h5>Wyloguj</h5></a>
 {% endblock %}

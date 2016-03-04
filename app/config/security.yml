@@ -14,7 +14,7 @@ security:
         main:
             pattern: ^/
             form_login:
-                default_target_path: /main
+                default_target_path: /task
                 always_use_default_target_path: false
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider

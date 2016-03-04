@@ -17,9 +17,18 @@ class TaskType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('date')
-            ->add('status')
-            ->add('priority')
+            ->add('date', 'date',array(
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'attr' => array(
+                    'class' => 'calendar'
+                )))
+            ->add('status', 'choice', ['label'    => 'Status',
+                'multiple' => false,
+                'choices'  => ['0'=>'----','Zrobiony' => 'Zrobiony', 'Do zrobienia' => 'Do zrobienia']])
+            ->add('priority','choice', ['label'    => 'Priority',
+                'multiple' => false,
+                'choices'  => ['0'=>'----','Pilny' => 'Pilny', 'Ważny' => 'Ważny', 'Normalny'=>'Normalny']]) ;
         ;
     }
     

@@ -11,9 +11,12 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <h5>Zalogowany # {{ app.user.username }} #</h5>
 
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-            <h5>Zalogowany # {{ app.user.username }} #</h5>
+
+
+
     </body>
 </html>

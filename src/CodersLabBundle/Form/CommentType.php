@@ -17,7 +17,12 @@ class CommentType extends AbstractType
         $builder
 
             ->add('description')
-            ->add('date')
+            ->add('date', 'date',array(
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'attr' => array(
+                    'class' => 'calendar'
+                )))
         ;
     }
     

@@ -1,14 +1,27 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+    <div class="col-md-1">
+        <a> </a>
+    </div>
+    <h1>Dodaj nowy cel</h1>
+    <a class="btn btn-primary" href="{{ path('task') }}" role="button">Twoje Cele</a>
+    <a class="btn btn-primary" href="{{ path('task_new') }}" role="button">Dodaj Cel</a>
+    <a class="btn btn-warning" href="{{ path('coderslab_task_indextodo') }}" role="button">W trakcie</a>
+    <a class="btn btn-danger" href="{{ path('coderslab_task_indexpioritetyone') }}" role="button">Pilne</a>
+    <a class="btn btn-danger" href="{{ path('coderslab_task_indexpioritetytwo') }}" role="button">Wazne</a>
+    <a class="btn btn-danger" href="{{ path('coderslab_task_indexpioritetytree') }}" role="button">Normalny</a>
+    <a class="btn btn-warning" href="{{ path('coderslab_task_indexdone') }}" role="button">Osiągnięte</a>
+    <a class="btn btn-success" href="{{ path('fos_user_security_logout') }}" role="button">Wyloguj</a>
+    <a class="btn btn-info" href="{{ path('fos_user_change_password') }}" role="button">Zmień hasło</a>
+    <hr>
     <div class="row">
-        <div class="col-md-4">
-    <h1>Dodaj swój cel</h1>
-
-    {{ form(form) }}
+        <div class="col-md-1">
+            <a> </a>
+        </div>
+        <div class="col-md-5">
+            {{ form(form) }}
+        </div>
     </div>
-    </div>
-    <a href="{{ path('task') }}"><h5>Wróć do listy</h5></a>
-    <a href="{{ path('coderslab_main_main') }}"><h5>Strona główna</h5></a>
-    <a href="{{ path('fos_user_security_logout') }}"><h5>Wyloguj</h5></a>
+    <hr>
 {% endblock %}
