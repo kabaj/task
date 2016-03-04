@@ -30,7 +30,9 @@ class TaskController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CodersLabBundle:Task')->findAll();
+        $entities = $em->getRepository('CodersLabBundle:Task')->findBy(
+            array('user_task' => $this->getUser()->getId())
+        );
 
         return array(
             'entities' => $entities,

@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use CodersLabBundle\Entity\Comment;
 use CodersLabBundle\Form\CommentType;
+use CodersLabBundle\Entity\Task;
 
 /**
  * Comment controller.
@@ -29,8 +30,9 @@ class CommentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CodersLabBundle:Comment')->findAll();
-
+        $entities = $em->getRepository('CodersLabBundle:Comment')->findBy(
+            array('task_comments' => $this->getTaskComments()->getId())
+        );
         return array(
             'entities' => $entities,
         );
@@ -40,11 +42,22 @@ class CommentController extends Controller
      *
      * @Route("/", name="comment_create")
      * @Method("POST")
-     * @Template("CodersLabBundle:Comment:new.html.twig")
+     * @Template()
      */
     public function createAction(Request $request)
     {
+
+        $task_id = $request->query->get('task_id');
+        $logger  = $this->get('logger');
+
+        $logger->info('hejka2');
+        $logger->info($task_id);
+
         $entity = new Comment();
+
+        $task_id = $entity->getTaskComments();
+
+        $entity->setTaskComments($task_id);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
